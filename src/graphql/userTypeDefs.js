@@ -11,6 +11,7 @@ type User {
 type Query {
     getUser: User
 }
+
 type Mutation {
     insertUser(
         email: String!
