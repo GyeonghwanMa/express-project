@@ -9,11 +9,11 @@ type User {
 }
 
 type Query {
-    getUser: User
+    getUsers: User
 }
 
 type Mutation {
-    insertUser(
+    postUser(
         email: String!
         name: String
         password: String!
