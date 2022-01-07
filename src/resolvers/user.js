@@ -5,9 +5,10 @@ export const userResolvers = {
         }
     },
     Mutation: {
-        async postUser({email, password, name}) {
+        async postUser(_, {email, password, name}) {
             console.log("postUser 실행!")
-            
+            console.log(email);
+            return null;
         }
     },
 }

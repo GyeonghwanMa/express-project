@@ -3,9 +3,9 @@ scalar Date
 
 type User {
     _id: ID
-    email: String
+    email: String!
     password: String!
-    name: String
+    name: String!
 }
 
 type Query {
@@ -15,8 +15,8 @@ type Query {
 type Mutation {
     postUser(
         email: String!
-        name: String
         password: String!
+        name: String!
     ): User
 }
 `;
