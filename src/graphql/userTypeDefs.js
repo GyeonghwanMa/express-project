@@ -21,5 +21,15 @@ type Mutation {
         password: String!
         name: String!
     ): User
+    patchUser(
+        email: String!
+        password: String!
+        name: String!
+    ): User
+    deleteUser(
+        email: String!
+        password: String!
+        name: String!
+    ): User
 }
 `;
