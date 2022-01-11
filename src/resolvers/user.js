@@ -11,6 +11,15 @@ export const userResolvers = {
                 console.log(`getUser Error = ${error}`);
             }
             return result;
+        },
+        async getUserByEmail(_, {email}) {
+            let result;
+            try {
+                result = await User.findOne({email: email});
+            } catch (error) {
+                console.log(`getUser Error = ${error}`);
+            }
+            return result;
         }
     },
     Mutation: {

@@ -13,6 +13,9 @@ type Query {
         email: String!
         password: String!
     ): User
+    getUserByEmail(
+        email: String!
+    ): User
 }
 
 type Mutation {
