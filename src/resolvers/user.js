@@ -53,8 +53,10 @@ export const userResolvers = {
         },
         async deleteUser(_, {email, password}) {
             console.log("deleteUser 실행!");
+            let result;
             try {
                 result = await User.findOneAndDelete({email: email, password: password});
+                console.log(result);
             } catch (error) {
                 console.log(`deleteUser Error = ${error}`);
             }
