@@ -32,7 +32,6 @@ type Mutation {
     deleteUser(
         email: String!
         password: String!
-        name: String!
     ): User
 }
 `;
