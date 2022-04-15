@@ -16,6 +16,7 @@ type Query {
     getUserByEmail(
         email: String!
     ): User
+    getUsersInit: [User]
 }
 
 type Mutation {

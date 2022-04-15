@@ -12,6 +12,16 @@ export const userResolvers = {
             }
             return result;
         },
+        async getUsersInit() {
+            console.log("getUsersInit 실행!")
+            let result;
+            try {
+                result = await User.find().sort({_id: -1}).limit(20);
+            } catch (error) {
+                console.log(`getUser Error = ${error}`);
+            }
+            return result;
+        },
         async getUserByEmail(_, {email}) {
             let result;
             try {
