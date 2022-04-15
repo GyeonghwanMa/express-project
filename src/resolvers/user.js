@@ -24,13 +24,11 @@ export const userResolvers = {
             return result;
         },
         async getUsers(_, {lastId}) {
-            console.log(lastId)
             console.log("getUsers 실행!")
             let result;
             try {
                 if (lastId && !isValidObjectId(lastId)) throw new Error("invalid lastid");
                 result = await User.find({_id: { $lt: lastId } }).sort({_id: -1}).limit(20);
-                console.log(result)
             } catch (error) {
                 console.log(`getUsers Error = ${error}`);
             }
