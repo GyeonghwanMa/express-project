@@ -17,6 +17,7 @@ type Query {
         email: String!
     ): User
     getUsersInit: [User]
+    getUsers(lastId: String): [User]
 }
 
 type Mutation {
