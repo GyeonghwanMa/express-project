@@ -1,5 +1,7 @@
 import User from "../model/userSchema";
 import { isValidObjectId } from "mongoose";
+import nodemailer from "nodemailer";
+const { MAILHOST, EMAIL, PASSWORD } = process.env;
 
 export const userResolvers = {
     Query: {
@@ -42,6 +44,41 @@ export const userResolvers = {
                 console.log(`getUser Error = ${error}`);
             }
             return result;
+        },
+        async sendEmail() {
+            console.log("sendEmail 실행!")
+            let transporter = nodemailer.createTransport({
+                // 사용하고자 하는 서비스, gmail계정으로 전송할 예정이기에 'gmail'
+                service: 'gmail',
+                // host를 gmail로 설정
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: false,
+                auth: {
+                  // Gmail 주소 입력, 'testmail@gmail.com'
+                  user: EMAIL,
+                  // Gmail 패스워드 입력
+                  pass: PASSWORD,
+                },
+            });
+            let info = await transporter.sendMail({
+                // 보내는 곳의 이름과, 메일 주소를 입력
+                from: `"hi" <${EMAIL}>`,
+                // 받는 곳의 메일 주소를 입력
+                to: 'ghma1213@gmail.com',
+                // 보내는 메일의 제목을 입력
+                subject: 'hi',
+                // 보내는 메일의 내용을 입력
+                // text: 일반 text로 작성된 내용
+                // html: html로 작성된 내용
+                text: "hi",
+                html: `<b>hi</b>`,
+            });
+            if (info.messageId) {
+                return true;
+            } else {
+                return false;
+            }
         }
     },
     Mutation: {
